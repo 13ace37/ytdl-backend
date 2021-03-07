@@ -1,0 +1,16 @@
+{
+  "name": "ytdl-backend",
+  "version": "0.0.1",
+  "description": "selfhosted, webbased YouTube mp3/4 downloader and converter.",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "author": "Riccardo (ace) H.",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1",
+    "fluent-ffmpeg": "^2.1.2",
+    "ytdl-core": "^4.5.0"
+  }
+}
