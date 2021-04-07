@@ -1,6 +1,9 @@
 
 const PORT = "" || 12938; // Add ur custom port here
 
+let fullDir = process.argv[0].split("\\");
+fullDir.pop();
+__dirname = fullDir.join("\\");
 
 const fs = require('fs');
 const ytdl = require('ytdl-core');
