@@ -31,5 +31,5 @@ let video = req.query.v || '12789';
 });
 
 app.listen(PORT, () => {
-  console.log(`Example app listening at http://localhost:${PORT}`);
+  console.log(`ytdl listening at http://localhost:${PORT}`);
 });
