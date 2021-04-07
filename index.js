@@ -9,14 +9,15 @@ const ffmpeg = require('fluent-ffmpeg');
 const app = express();
 
 app.get('/', (req, res) => {
-	let video = req.query.v || '1';
-	if (!video) return res.status(400).send('Invalid Request');
+let video = req.query.v || '12789';
+	if (!video) return res.status(400).send('U Wrong :)');
 	if (video.split("v=")[1]) video = video.split("v=")[1];
 	if (!ytdl.validateID(video)) return res.sendFile(__dirname + '/index.html');
-	let stream = ytdl(`http://www.youtube.com/watch?v=${video}`);
+	let astream = ytdl(`http://www.youtube.com/watch?v=${video}`, { quality:"highestaudio" });
+	let vstream = ytdl(`http://www.youtube.com/watch?v=${video}`, { quality:"highestvideo" });
 	if (req.query.a) {
 		try {
-			let proc = new ffmpeg({source:stream});
+			let proc = new ffmpeg({source:astream});
 			proc.toFormat('mp3');
 			res.attachment(`${video}.mp3`);
 			proc.pipe(res);
@@ -25,7 +26,7 @@ app.get('/', (req, res) => {
 		}
 	} else {
 		res.attachment(`${video}.mp4`);
-		stream.pipe(res);
+		vstream.pipe(res);
 	}
 });
 
